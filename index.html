@@ -1,17 +1,25 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title></title>
 </head>
-	
+    
 <script>
+function mycopyFunction()
+{
+    const inputElement = document.querySelector('#t2');
+    inputElement.select();
+    document.execCommand('copy');
+}
 function myFunction()
 {
-	var test = document.getElementById("t1");
-	var test2 = document.getElementById("t2");
+    var test = document.getElementById("t1");
+    var test2 = document.getElementById("t2");
     resultStr =test.value
-	resultStr = resultStr.replace("缘份","O 份")
+    resultStr = resultStr.replace("缘份","O 份")
+    resultStr = resultStr.replace("缘分","O 份")
     resultStr = resultStr.replace("出道","出到")
     resultStr = resultStr.replace("法力","Fa 力")
     resultStr = resultStr.replace("感应","gan应")
@@ -32,13 +40,48 @@ function myFunction()
     test2.value = resultStr
 }
 </script>
-<body>
-<textarea id='t1' rows="10" cols="100">
-</textarea>
-	
-<textarea id='t2' rows="10" cols="100">
-</textarea>
+<style>
+body {
+  margin: 0;
+}
 
-<button onclick="myFunction()">点我</button>
+.header {
+  padding: 20px;
+  text-align: center;
+}
+
+.button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #4CAF50;
+}
+
+</style>
+
+<body>
+<div class="header">
+    <h1 >敏感词替换</h1>
+    <textarea id='t1' rows="10" cols="100"></textarea>
+    <textarea id='t2' rows="10" cols="100"></textarea>
+</div>
+<div class="header">
+    <button class="button" onclick="myFunction()">生成脱敏文案</button>
+    <button class="button" onclick="mycopyFunction()">复制结果</button>
+</div>
+
+    
+
 </body>
 </html>
