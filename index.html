@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+	
+<script>
+function myFunction()
+{
+	var test = document.getElementById("t1");
+	var test2 = document.getElementById("t2");
+    resultStr =test.value
+	resultStr = resultStr.replace("缘份","O 份")
+    resultStr = resultStr.replace("出道","出到")
+    resultStr = resultStr.replace("法力","Fa 力")
+    resultStr = resultStr.replace("感应","gan应")
+    resultStr = resultStr.replace("财","贝才")
+    resultStr = resultStr.replace("阴","yin")
+    resultStr = resultStr.replace("债","亻责")
+    resultStr = resultStr.replace("弟子","第子")
+    resultStr = resultStr.replace("弟子","第子")
+    resultStr = resultStr.replace("风水","feng水")
+    resultStr = resultStr.replace("坟","土文")
+    test2.value = resultStr
+}
+</script>
+<body>
+<textarea id='t1' rows="10" cols="100">
+</textarea>
+	
+<textarea id='t2' rows="10" cols="100">
+</textarea>
+
+<button onclick="myFunction()">点我</button>
+</body>
+</html>
