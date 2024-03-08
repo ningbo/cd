@@ -6,6 +6,12 @@
 </head>
 	
 <script>
+function mycopyFunction()
+{
+    const inputElement = document.querySelector('#t2');
+    inputElement.select();
+    document.execCommand('copy');
+}
 function myFunction()
 {
 	var test = document.getElementById("t1");
@@ -33,13 +39,48 @@ function myFunction()
     test2.value = resultStr
 }
 </script>
-<body>
-<textarea id='t1' rows="10" cols="100">
-</textarea>
-	
-<textarea id='t2' rows="10" cols="100">
-</textarea>
+<style>
+body {
+  margin: 0;
+}
 
-<button onclick="myFunction()">点我</button>
+.header {
+  padding: 20px;
+  text-align: center;
+}
+
+.button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #4CAF50;
+}
+
+</style>
+
+<body>
+<div class="header">
+    <h1 >敏感词替换</h1>
+    <textarea id='t1' rows="10" cols="100"></textarea>
+    <textarea id='t2' rows="10" cols="100"></textarea>
+</div>
+<div class="header">
+    <button class="button" onclick="myFunction()">确定</button>
+    <button class="button" onclick="mycopyFunction()">复制结果</button>
+</div>
+
+	
+
 </body>
 </html>
