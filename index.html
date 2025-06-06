@@ -3,100 +3,200 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title></title>
+<title>敏感词替换工具</title>
 </head>
     
 <script>
-function mycopyFunction()
-{
-    const inputElement = document.querySelector('#t2');
-    inputElement.select();
+/**
+ * 复制文本框内容到剪贴板
+ */
+function 复制文本() {
+    const 输入元素 = document.querySelector('#t2');
+    输入元素.select();
     document.execCommand('copy');
 }
-function myFunction()
-{
-    var test = document.getElementById("t1");
-    var test2 = document.getElementById("t2");
-    resultStr =test.value
-    resultStr = resultStr.replace("缘份","O 份")
-    resultStr = resultStr.replace("缘分","O 份")
-    resultStr = resultStr.replace("出道","出 d·ao")
-    resultStr = resultStr.replace("法力","F·a 力")
-    resultStr = resultStr.replace("感应","g·an 应")
-    resultStr = resultStr.replace("财","贝才")
-    resultStr = resultStr.replace("阴","yin")
-    resultStr = resultStr.replace("债","亻责")
-    resultStr = resultStr.replace("弟子","第子")
-    resultStr = resultStr.replace("风水","f·eng 水")
-    resultStr = resultStr.replace("窍","q·iao")
-    resultStr = resultStr.replace("坟","土文")
+/**
+ * 替换输入文本中的敏感词并输出到结果文本框
+ */
+function 生成脱敏文案() {
+    const 输入框 = document.getElementById("t1");
+    const 输出框 = document.getElementById("t2");
+    let 结果文本 = 输入框.value;
+    const 敏感词映射 = {
+        "缘份": "O份",
+        "缘分": "O份",
+        "出道": "出d·ao",
+        "法力": "F·a力",
+        "感应": "g·an应",
+        "财": "贝才",
+        "阴": "yin",
+        "债": "亻责",
+        "弟子": "第子",
+        "风水": "f·eng水",
+        "窍": "q·iao",
+        "坟": "土文",
+        "众生": "众s·heng",
+        "任务": "r·en务",
+        "堂": "t·ang",
+        "佛": "f·o",
+        "因果": "y·in g·uo",
+        "出马": "c·hu马",
+        "仙": "“亻”“山”",
+        "冤": "y·uan",
+        "超度": "超 d·u",
+        "仇": "“亻”“九”",
+        "业": "y·e",
+        "能量": "neng·liang",
+        "命": "m·ing",
+        "鬼": "g·ui",
+        "身后": "身 h·ou",
+        "神": "s·hen",
+        "报应": "b·ao y·ing",
+        "虚空": "x·u k·ong",
+        "虚": "x·u·",
+        "老天爷": "老·t·ia·nye",
+        "天机": "t·ian·ji",
+        "忏悔": "‘忄’‘千’",
+        "魂魄": "h·un 魄",
+        "法": "F·a",
+        "道": "d·ao",
+        "禅": "ch·an",
+        "悟": "w·u",
+        "经": "j·ing",
+        "咒": "zh·ou",
+        "符": "f·u",
+        "箓": "l·u",
+        "坛": "t·an",
+        "观": "g·uan",
+        "寺": "s·i",
+        "庙": "m·iao",
+        "庵": "a·n",
+        "僧": "s·eng",
+        "尼": "n·i",
+        "道童": "d·ao童",
+        "居士": "居s·hi",
+        "罗汉": "l·uo汉",
+        "菩萨": "p·u萨",
+        "金刚": "j·in刚",
+        "护法": "h·u F·a",
+        "天劫": "t·ian劫",
+        "轮回": "l·un回",
+        "往生": "w·ang生",
+        "极乐": "j·i乐",
+        "地狱": "d·i狱",
+        "天庭": "t·ian庭",
+        "地府": "d·i府",
+        "灵体": "l·ing体",
+        "元神": "元s·hen",
+        "灵器": "l·ing器",
+        "法宝": "F·a宝",
+        "仙丹": "仙d·an",
+        "灵符": "灵f·u",
+        "法术": "F·a术",
+        "道法": "d·ao F·a",
+        "禅定": "ch·an定",
+        "冥想": "m·ing想",
+        "顿悟": "d·un悟",
+        "加持": "j·ia持",
+        "开光": "k·ai光",
+        "超度亡灵": "超 d·u亡l·ing",
+        "驱邪": "q·u邪",
+        "镇宅": "zh·en宅",
+        "风水局": "f·eng水局",
+        "八卦": "b·a卦",
+        "五行": "w·u行",
+        "阴阳师": "yin阳s·hi",
+        "神婆": "s·hen婆",
+        "跳大神": "跳d·a神",
+        "出马仙": "c·hu马仙",
+        "乩童": "j·i童"
+    };
 
-    resultStr = resultStr.replace("众生","众 s·heng")
-    resultStr = resultStr.replace("任务","r·en 务")
-    resultStr = resultStr.replace("堂","t·ang")
-    resultStr = resultStr.replace("佛","f·o")
-    resultStr = resultStr.replace("因果","y·in g·uo")
-    resultStr = resultStr.replace("出马","c·hu 马")
-    resultStr = resultStr.replace("仙","“亻”“山”")
-    resultStr = resultStr.replace("冤","y·uan")
-    resultStr = resultStr.replace("超度","超 d·u")
-    resultStr = resultStr.replace("仇","“亻”“九””")
-    resultStr = resultStr.replace("业","y·e")
-    resultStr = resultStr.replace("能量","neng·liang")
-    resultStr = resultStr.replace("命","m·ing")
-    resultStr = resultStr.replace("鬼","g·ui")
-    resultStr = resultStr.replace("身后","身 h·ou")
-    resultStr = resultStr.replace("神","s·hen")
-    resultStr = resultStr.replace("报应","b·ao y·ing")
-    resultStr = resultStr.replace("虚空","x·u k·ong")
-    resultStr = resultStr.replace("虚","x·u·")
-    resultStr = resultStr.replace("老天爷","老·t·ia·nye")
-    resultStr = resultStr.replace("天机","t·ian·ji")
-    resultStr = resultStr.replace("忏悔","‘忄’‘千’")
-    resultStr = resultStr.replace("魂魄","h·un 魄")
-    resultStr = resultStr.replace("法","F·a")
-    test2.value = resultStr
+    for (const [敏感词, 替换词] of Object.entries(敏感词映射)) {
+        结果文本 = 结果文本.replace(new RegExp(敏感词, 'g'), 替换词);
+    }
+
+    输出框.value = 结果文本;
 }
 </script>
 <style>
+/* 使用现代 CSS 框架风格优化样式 */
 body {
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f4f5f7;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .header {
-  padding: 20px;
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: #2d3748;
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.textarea-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+textarea {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .button {
-  background-color: #04AA6D;
-  border: none;
+  background-color: #4299e1;
   color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 26px;
-  margin: 4px 2px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
-h1 {
-  text-align: center;
-  text-transform: uppercase;
-  color: #4CAF50;
+
+.button:hover {
+  background-color: #3182ce;
 }
+
 
 </style>
 
 <body>
-<div class="header">
-    <h1 >敏感词替换</h1>
-    <textarea id='t1' rows="10" cols="100" placeholder="在此输入原文章"></textarea> 
-    <textarea id='t2' rows="10" cols="100" placeholder="点击下方按钮，生成脱敏文章"></textarea>
-</div>
-<div class="header">
-    <button class="button" onclick="myFunction()">生成脱敏文案</button>
-    <button class="button" onclick="mycopyFunction()">复制结果</button>
+<div class="container">
+    <div class="header">
+        <h1 class="title">敏感词替换</h1>
+    </div>
+    <div class="textarea-group">
+        <textarea id='t1' rows="10" placeholder="在此输入原文章"></textarea> 
+        <textarea id='t2' rows="10" placeholder="点击下方按钮，生成脱敏文章"></textarea>
+    </div>
+    <div class="button-group">
+        <button class="button" onclick="生成脱敏文案()">生成脱敏文案</button>
+        <button class="button" onclick="复制文本()">复制结果</button>
+    </div>
 </div>
 
     
